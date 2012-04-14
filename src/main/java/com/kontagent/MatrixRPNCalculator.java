@@ -2,6 +2,10 @@ package com.kontagent;
 
 class MatrixRPNCalculator {
 	public static void main(String[] args) {
+		
+		String test = "testCSV";
+		
+		
 		//Input of two file names
 		//Read that file in
 		//Split it on CRLF and commas into two D array of Strings
