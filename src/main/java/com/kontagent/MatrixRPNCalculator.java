@@ -1,10 +1,14 @@
 package com.kontagent;
 
+import java.util.HashMap;
+
 class MatrixRPNCalculator {
 	public static void main(String[] args) {
 		
 		
 		//Input of two file names
+		
+		
 		//Read that file in
 		//Split it on CRLF and commas into two D array of Strings
 			//Or put it in a HashMap of 
@@ -17,5 +21,10 @@ class MatrixRPNCalculator {
 			//if it's an operation, key.process, return
 			//if it's a simple number, return
 		//Once you have the result set, build up the output and dump it.
+	}
+	
+	public HashMap<String, Node> getResultsOfProcessing(){
+		
+		return null;
 	}
 }

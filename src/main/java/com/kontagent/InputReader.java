@@ -23,7 +23,6 @@ public class InputReader {
 				
 				String[] columns = currentRow.split(",\\s*");
 				
-				
 				for(int columnNumber=1; columnNumber<=columns.length; columnNumber++){
 
 					String nodeContent = columns[columnNumber - 1];
