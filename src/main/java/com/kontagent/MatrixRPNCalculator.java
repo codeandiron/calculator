@@ -3,8 +3,6 @@ package com.kontagent;
 class MatrixRPNCalculator {
 	public static void main(String[] args) {
 		
-		String test = "testCSV";
-		
 		
 		//Input of two file names
 		//Read that file in
