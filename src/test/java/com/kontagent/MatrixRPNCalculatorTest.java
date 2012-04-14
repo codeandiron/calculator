@@ -14,8 +14,7 @@ public class MatrixRPNCalculatorTest {
 		String csvString = InputReader.getInput("../../basic.csv");
 		Assert.assertNotNull(csvString);
 		
-		HashMap<String,String> result = InputReader.convertCSVStringToHashMap(csvString);
+		HashMap<String,Node> result = InputReader.convertCSVStringToHashMap(csvString);
 		Assert.assertNotNull(result);
-		
 	}
 }

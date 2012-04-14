@@ -7,6 +7,11 @@ public class Node {
 	//Just a 
 	private static String FLOAT_OR_INT = "(([0-9]+)|([0-9]+)\\.([0-9]+))";
 	
+	@SuppressWarnings("unused")
+	private Node(){
+		//Disable direct instantiation without contents
+	}
+	
 	public Node (String contents) throws InvalidNodeException{
 		this.contents = contents;
 

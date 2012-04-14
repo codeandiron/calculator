@@ -11,21 +11,37 @@ public class InputReader {
 		return new Scanner(fileInput).useDelimiter("\\A").next();
 	}
 	
-	public static HashMap<String, String> convertCSVStringToHashMap (String inputString){
-		HashMap<String, String> resultMap = new HashMap<String, String>();
+	public static HashMap<String, Node> convertCSVStringToHashMap (String inputString){
+		HashMap<String, Node> resultMap = new HashMap<String, Node>();
 		
 		//Split off CRLF into lines
-		String[] lines = inputString.split("\\r?\\n");
+		String[] rows = inputString.split("\\r?\\n");
 		
-		//B3
-		//B is the column number
-		//3 is the row number
-	
-		for (int i=0; i<lines.length; i++){
-			//split lines into operands
-			lines[i].split(",\\s*");
+		try{
+			for (int rowNumber=1; rowNumber <= rows.length; rowNumber++){
+				String currentRow = rows[rowNumber - 1];
+				
+				String[] columns = currentRow.split(",\\s*");
+				
+				
+				for(int columnNumber=1; columnNumber<=columns.length; columnNumber++){
+
+					String nodeContent = columns[columnNumber - 1];
+					
+					Node node = new Node(nodeContent);
+					
+					resultMap.put(getNodeKey(columnNumber, rowNumber), node);
+				}
+			}
+		}catch(InvalidNodeException e){
+			System.out.println("Failed to parse all of the nodes into one of the three types");
 		}
 		
 		return resultMap;
+	}
+
+	private static String getNodeKey(int columnNumber, int rowNumber) {
+		
+		return (char)(columnNumber + 64) + String.valueOf(rowNumber);
 	}
 }
