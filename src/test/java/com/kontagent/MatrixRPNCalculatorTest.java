@@ -1,19 +1,15 @@
 package com.kontagent;
 
-import org.junit.Before;
+import junit.framework.Assert;
+
 import org.junit.Test;
 
 
 public class MatrixRPNCalculatorTest {
-
-	@Before
-	public void setup(){
-		
-	}
 	
 	@Test
-	public void testFileProc(){
-
-		
+	public void testBasic(){
+		String csv = InputReader.getInput("../../basic.csv");
+		Assert.assertNotNull(csv);
 	}
 }

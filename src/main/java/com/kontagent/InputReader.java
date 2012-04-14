@@ -7,7 +7,6 @@ public class InputReader {
 	
 	public static String getInput(String fileName){		
 		InputStream fileInput = InputReader.class.getResourceAsStream(fileName);
-		
 		return new Scanner(fileInput).useDelimiter("\\A").next();
 	}
 }
