@@ -1,5 +1,7 @@
 package com.kontagent;
 
+import java.util.HashMap;
+
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -9,7 +11,11 @@ public class MatrixRPNCalculatorTest {
 	
 	@Test
 	public void testBasic(){
-		String csv = InputReader.getInput("../../basic.csv");
-		Assert.assertNotNull(csv);
+		String csvString = InputReader.getInput("../../basic.csv");
+		Assert.assertNotNull(csvString);
+		
+		HashMap<String,String> result = InputReader.convertCSVStringToHashMap(csvString);
+		Assert.assertNotNull(result);
+		
 	}
 }
