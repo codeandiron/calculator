@@ -1,0 +1,5 @@
+#!/bin/bash
+JAVA_HOME=/usr/java/jdk1.7.0_03
+CLASSPATH=/home/mholtom/workspace/kontagent
+$JAVA_HOME/bin/java -cp $CLASSPATH MatrixRPNCalculator
+exit 0
