@@ -4,7 +4,11 @@ package com.kontagent;
 class MatrixRPNCalculator {
 	public static void main(String[] args) throws InvalidNodeException {
 		
-		
+		if(args.length == 0)
+	    {
+	        System.out.println("Usage: java MatrixRPNCalculator csvInputFileName");
+	        System.exit(0);
+	    }
 		
 		String inputString = InputReader.getInput(args[0]);
 		
