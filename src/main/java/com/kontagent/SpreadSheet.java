@@ -73,9 +73,9 @@ public class SpreadSheet extends HashMap<String, Node>{
 				//If it's a CELL_REFERENCE, we should go ahead and process the referenced cell now
 				String referencedKey = currentNode.getReferencedKey();
 				Node referencedNode = this.get(referencedKey);
-				currentNode = referencedNode;
 				process(referencedKey, referencedNode);
-				this.put(currentKey, currentNode);
+				Node updatedReferencedNode = this.get(referencedKey);
+				this.put(currentKey, updatedReferencedNode);
 				break;
 			case OPERATION:
 				//If it's an operation, go ahead and perform the calculation
