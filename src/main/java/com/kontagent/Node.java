@@ -4,51 +4,85 @@ public class Node {
 
 	private String contents;
 	private Type type;
-	//Just a 
+	// Just a
 	private static String FLOAT_OR_INT = "(([0-9]+)|([0-9]+)\\.([0-9]+))";
-	
+
 	@SuppressWarnings("unused")
-	private Node(){
-		//Disable direct instantiation without contents
+	private Node() {
+		// Disable direct instantiation without contents
 	}
-	
-	public Node (String contents) throws InvalidNodeException{
+
+	public Node(String contents) throws InvalidNodeException {
 		this.contents = contents;
 
-		//Each node of the matrix should conform to one of the 3 types in the challenge document
-		for(Type type : Type.values()){
-			if(doesNodeMatchType(type)){
+		// Each node of the matrix should conform to one of the 3 types in the
+		// challenge document
+		for (Type type : Type.values()) {
+			if (doesNodeMatchType(type)) {
 				this.type = type;
 				break;
 			}
 		}
-		//Confirm that the node has been assigned a type
-		if(this.type == null){
-			throw new InvalidNodeException("This node does not match a valid format");
+		// Confirm that the node has been assigned a type
+		if (this.type == null) {
+			throw new InvalidNodeException(
+					"This node does not match a valid format");
 		}
 	}
-	
+
 	public enum Type {
-		//Each type of matrix node has a regular expression that defines it
-		//SIMPLE_VALUE i.e. 6, 1.2, or 0.53
-		//CELL_REFERENCE i.e. A21, Z28, F2203, NOT F02
-		//OPERATION i.e. =0.40 1.58 +, =4 2 -
-		SIMPLE_VALUE(FLOAT_OR_INT),
-		CELL_REFERENCE("=[A-Z]([1-9]|[1-9][0-9]+)"),
+		// Each type of matrix node has a regular expression that defines it
+		// SIMPLE_VALUE i.e. 6, 1.2, or 0.53
+		// CELL_REFERENCE i.e. A21, Z28, F2203, NOT F02
+		// OPERATION i.e. =0.40 1.58 +, =4 2 -
+		SIMPLE_VALUE(FLOAT_OR_INT), 
+		CELL_REFERENCE("=[A-Z]([1-9]|[1-9][0-9]+)"), 
 		OPERATION("(=)" + FLOAT_OR_INT + "[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])");
-		
-		Type(String regex){
+
+		Type(String regex) {
 			this.regex = regex;
 		}
-		
+
 		private String regex;
 	}
-	
-	private boolean doesNodeMatchType(Type type){
+
+	private boolean doesNodeMatchType(Type type) {
 		return this.contents.matches(type.regex);
 	}
-	
-	public Type getType(){
+
+	public Type getType() {
 		return this.type;
+	}
+
+	public String getReferencedKey() throws InvalidNodeException {
+		if(!(this.type == Type.CELL_REFERENCE)){
+			throw new InvalidNodeException("Attempt to get referenced cell failed");
+		}
+		return this.contents.substring(1);
+	}
+
+	public Node performCalculation() throws InvalidNodeException {
+		if(!(this.type == Type.OPERATION)){
+			throw new InvalidNodeException("Attempt to perform calculation failed");
+		}
+		
+		String[] operation = this.contents.substring(1).split(" ");
+
+		Float operand1 = Float.parseFloat(operation[0]);
+		Float operand2 = Float.parseFloat(operation[1]);
+		Float result = null;
+		String operator = operation[2];
+
+		if (operator.equals("+")) {
+			result = operand1 + operand2;
+		} else if (operator.equals("-")) {
+			result = operand1 - operand2;
+		} else if (operator.equals("*")) {
+			result = operand1 * operand2;
+		} else if (operator.equals("/")) {
+			result = operand1 / operand2;
+		}
+
+		return new Node(result.toString());
 	}
 }

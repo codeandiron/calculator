@@ -1,7 +1,5 @@
 package com.kontagent;
 
-import java.util.HashMap;
-
 import junit.framework.Assert;
 
 import org.junit.Test;
@@ -14,17 +12,19 @@ public class MatrixRPNCalculatorTest {
 		String csvString = InputReader.getInput("../../basic.csv");
 		Assert.assertNotNull(csvString);
 		
-		HashMap<String,Node> result = InputReader.convertCSVStringToHashMap(csvString);
-		Assert.assertNotNull(result);
+		SpreadSheet spreadSheet = new SpreadSheet(csvString);
+		Assert.assertNotNull(spreadSheet);
 	}
 	
 	@Test
-	public void testCellRefsFile(){
+	public void testCellRefsFile() throws InvalidNodeException{
 		String csvString = InputReader.getInput("../../cellref.csv");
 		Assert.assertNotNull(csvString);
 		
-		HashMap<String,Node> result = InputReader.convertCSVStringToHashMap(csvString);
-		Assert.assertNotNull(result);
+		SpreadSheet spreadSheet = new SpreadSheet(csvString);
+		spreadSheet.processSpreadsheet();
+		
+		Assert.assertNotNull(spreadSheet);
 	}
 	
 	@Test
@@ -32,7 +32,7 @@ public class MatrixRPNCalculatorTest {
 		String csvString = InputReader.getInput("../../operations.csv");
 		Assert.assertNotNull(csvString);
 		
-		HashMap<String,Node> result = InputReader.convertCSVStringToHashMap(csvString);
-		Assert.assertNotNull(result);
+		SpreadSheet spreadSheet = new SpreadSheet(csvString);
+		Assert.assertNotNull(spreadSheet);
 	}
 }
