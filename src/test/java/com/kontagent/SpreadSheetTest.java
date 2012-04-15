@@ -53,6 +53,18 @@ public class SpreadSheetTest {
 												 			"1, 1, 2, 1\n" +
 												 			"1, 1, 1, 2";
 	
+	private static final String cellReferenceInOperation = "1, 2\n"+
+														   "4, =A1 25 +";
+
+	private static final String cellReferenceInOperationResult = 	"1, 2\n"+
+																	"4, 26.0";
+	
+	private static final String complexCellOp = "1, =B2 100 *\n"+
+												"4, =A1 45 +";
+	
+	private static final String complexCellOpResult = 	"1, 4600.0\n"+
+														"4, 46.0";
+	
 	private String inputCSV;
 	private String outputCSV;
 	
@@ -68,7 +80,9 @@ public class SpreadSheetTest {
                  {operation, operationResult},
                  {cellRef, cellRefResult},
                  {complex, complexResult},
-                 {multiIndirection, multiIndirectionResult}
+                 {multiIndirection, multiIndirectionResult},
+                 {cellReferenceInOperation, cellReferenceInOperationResult},
+                 {complexCellOp, complexCellOpResult}
                  });
     }
     

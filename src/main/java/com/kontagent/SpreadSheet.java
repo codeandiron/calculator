@@ -81,6 +81,17 @@ public class SpreadSheet extends HashMap<String, Node>{
 				Node updatedReferencedNode = this.get(referencedKey);
 				this.put(currentKey, updatedReferencedNode);
 				break;
+			case OPERATIONWITHCELLREF:
+				String withoutEqual = currentNode.getContents().substring(1);
+				String keyToLookup = withoutEqual.split(" ")[0];
+				Node ref = this.get(keyToLookup);
+				process(keyToLookup, ref);
+				Node updatedRef = this.get(keyToLookup);
+				//Good god this needs to be fixed ASAP.
+				//TODO: Fix this nasty kludge
+				Node newNode = new Node("=" + updatedRef.getContents() + " " + withoutEqual.split(" ")[1] + " " + withoutEqual.split(" ")[2]);
+				process(currentKey, newNode);
+				break;
 			case OPERATION:
 				//If it's an operation, go ahead and perform the calculation
 				this.put(currentKey, currentNode.performCalculation());

@@ -37,7 +37,8 @@ public class Node {
 		// OPERATION i.e. =0.40 1.58 +, =4 2 -
 		SIMPLE_VALUE(FLOAT_OR_INT), 
 		CELL_REFERENCE("=[A-Z]([1-9]|[1-9][0-9]+)"), 
-		OPERATION("(=)" + FLOAT_OR_INT + "[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])");
+		OPERATION("(=)" + FLOAT_OR_INT + "[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])"),
+		OPERATIONWITHCELLREF("(=)(" + FLOAT_OR_INT + "|" + "[A-Z]([1-9]|[1-9][0-9]+)" + ")[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])");
 
 		Type(String regex) {
 			this.regex = regex;
