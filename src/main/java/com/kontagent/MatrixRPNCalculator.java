@@ -10,12 +10,12 @@ class MatrixRPNCalculator {
 	        System.exit(0);
 	    }
 		
-		String inputString = InputReader.getInput(args[0]);
+		String inputString = InputUtils.getInput(args[0]);
 		
 		SpreadSheet spreadSheet = new SpreadSheet(inputString);
 		
 		spreadSheet.processSpreadsheet();
 		
-		InputReader.sendOutput(spreadSheet.getAsCSV());
+		InputUtils.sendOutput(spreadSheet.getAsCSV());
 	}
 }

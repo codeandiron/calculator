@@ -3,10 +3,10 @@ package com.kontagent;
 import java.io.InputStream;
 import java.util.Scanner;
 
-public final class InputReader {
+public final class InputUtils {
 	
 	public static String getInput(String fileName){		
-		InputStream fileInput = InputReader.class.getResourceAsStream(fileName);
+		InputStream fileInput = InputUtils.class.getResourceAsStream(fileName);
 		return new Scanner(fileInput).useDelimiter("\\A").next();
 	}
 	
