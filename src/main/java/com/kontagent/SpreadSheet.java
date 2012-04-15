@@ -48,18 +48,19 @@ public class SpreadSheet extends HashMap<String, Node>{
 	}
 	
 	public String getAsCSV() {
-		String csvString = "";
+		StringBuilder csvString = new StringBuilder();
 		for (int rowNumber = 1; rowNumber <= this.numberOfRows; rowNumber++) {
+			if(rowNumber!=1){csvString.append("\n");}
 			for (int columnNumber = 1; columnNumber <= this.numberOfColumns; columnNumber++) {
 				//Get the requested node for output
+				if(columnNumber!=1){csvString.append(", ");}
 				String currentKey = getNodeKey(columnNumber, rowNumber);
 				Node currentNode = this.get(currentKey);
-				csvString = csvString.concat(currentNode.getContents() + ", ");
+				csvString.append(currentNode.getContents());
 			}
-			csvString = csvString.concat("\n");
 		}
 		
-		return csvString;
+		return csvString.toString();
 	}
 	
 	//Recursive: If a node is a "CELL_REFERENCE", the reference will be processed first
@@ -73,6 +74,9 @@ public class SpreadSheet extends HashMap<String, Node>{
 				//If it's a CELL_REFERENCE, we should go ahead and process the referenced cell now
 				String referencedKey = currentNode.getReferencedKey();
 				Node referencedNode = this.get(referencedKey);
+				if(referencedNode == null){
+					throw new InvalidNodeException("The referenced node was not found in the matrix");
+				}
 				process(referencedKey, referencedNode);
 				Node updatedReferencedNode = this.get(referencedKey);
 				this.put(currentKey, updatedReferencedNode);
