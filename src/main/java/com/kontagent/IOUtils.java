@@ -6,7 +6,7 @@ import java.util.Scanner;
 public final class IOUtils {
 	
 	public static String getInput(String fileName){		
-		InputStream fileInput = IOUtils.class.getResourceAsStream(fileName);
+		InputStream fileInput = IOUtils.class.getResourceAsStream("../../" + fileName);
 		return new Scanner(fileInput).useDelimiter("\\A").next();
 	}
 	
