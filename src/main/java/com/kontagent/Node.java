@@ -84,6 +84,9 @@ public class Node {
 		} else if (operator.equals("*")) {
 			result = operand1 * operand2;
 		} else if (operator.equals("/")) {
+			if(operand2.equals(0)){
+				throw new IllegalArgumentException("Cannot divide by zero");
+			}
 			result = operand1 / operand2;
 		}
 
