@@ -53,6 +53,10 @@ public class Node {
 	public Type getType() {
 		return this.type;
 	}
+	
+	public String getContents() {
+		return this.contents;
+	}
 
 	public String getReferencedKey() throws InvalidNodeException {
 		if(!(this.type == Type.CELL_REFERENCE)){

@@ -13,8 +13,6 @@ public class SpreadSheet extends HashMap<String, Node>{
 	public int numberOfColumns;
 	
 	public SpreadSheet(String inputCSV){
-		
-		//Split off CRLF into lines
 		String[] rows = inputCSV.split("\\r?\\n");
 		
 		try{
@@ -39,12 +37,9 @@ public class SpreadSheet extends HashMap<String, Node>{
 	}
 
 	public void processSpreadsheet() throws InvalidNodeException {
-
-		for (int rowNumber = 1; rowNumber < this.numberOfRows; rowNumber++) {
-			// continue iterating over the columns
-
-			for (int columnNumber = 1; columnNumber < this.numberOfColumns; columnNumber++) {
-				// Get the resultant contents of the current node
+		for (int rowNumber = 1; rowNumber <= this.numberOfRows; rowNumber++) {
+			for (int columnNumber = 1; columnNumber <= this.numberOfColumns; columnNumber++) {
+				//Get and process the current node in the spreadsheet
 				String currentKey = getNodeKey(columnNumber, rowNumber);
 				Node currentNode = this.get(currentKey);
 				process(currentKey, currentNode);
@@ -52,7 +47,22 @@ public class SpreadSheet extends HashMap<String, Node>{
 		}
 	}
 	
-	//Recursive 1 level if a node contains reference to another node.
+	public String getAsCSV() {
+		String csvString = "";
+		for (int rowNumber = 1; rowNumber <= this.numberOfRows; rowNumber++) {
+			for (int columnNumber = 1; columnNumber <= this.numberOfColumns; columnNumber++) {
+				//Get the requested node for output
+				String currentKey = getNodeKey(columnNumber, rowNumber);
+				Node currentNode = this.get(currentKey);
+				csvString = csvString.concat(currentNode.getContents() + ", ");
+			}
+			csvString = csvString.concat("\n");
+		}
+		
+		return csvString;
+	}
+	
+	//Recursive: If a node is a "CELL_REFERENCE", the reference will be processed first
 	private void process(String currentKey, Node currentNode) throws InvalidNodeException {
 		switch (currentNode.getType()){
 			case SIMPLE_VALUE:
@@ -63,7 +73,8 @@ public class SpreadSheet extends HashMap<String, Node>{
 				//If it's a CELL_REFERENCE, we should go ahead and process the referenced cell now
 				String referencedKey = currentNode.getReferencedKey();
 				Node referencedNode = this.get(referencedKey);
-				process(currentKey, referencedNode);
+				currentNode = referencedNode;
+				process(referencedKey, referencedNode);
 				this.put(currentKey, currentNode);
 				break;
 			case OPERATION:

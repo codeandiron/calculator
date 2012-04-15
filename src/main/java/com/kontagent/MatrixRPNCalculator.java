@@ -4,14 +4,14 @@ package com.kontagent;
 class MatrixRPNCalculator {
 	public static void main(String[] args) throws InvalidNodeException {
 		
-		
-		//Input of two file names
-		
-		String inputString = InputReader.getInput("../../operations.csv");
+		String inputString = InputReader.getInput("../../cellref.csv");
 		
 		SpreadSheet spreadSheet = new SpreadSheet(inputString);
 		
+		InputReader.sendOutput(spreadSheet.getAsCSV());
+		
 		spreadSheet.processSpreadsheet();
 		
+		InputReader.sendOutput(spreadSheet.getAsCSV());
 	}
 }
