@@ -40,20 +40,20 @@ CONTENTS========================================================
 
 BUILDING WITH APACHE MAVEN=======================================
 1. Navigate to the root level of the project (with the pom.xml)
-2. type: "mvn clean package" and press Enter, ensure all test cases pass and "BUILD SUCCESS" appears
-3. Set your CLASSPATH: 
-4. Set your JAVA_HOME:
+2. Set your CLASSPATH to the maven target directory: "export CLASSPATH=/home/coder/workspace/kontagent/target/classes"
+3. Set your JAVA_HOME: "export JAVA_HOME=/usr/java/jdk1.7.0_03"
+4. Build the project: "mvn clean package", ensure all test cases pass and "BUILD SUCCESS" appears
 
 BUILDING WITHOUT APACHE MAVEN====================================
 1. Navigate to the root level of the project (with the pom.xml)
-2. type: "javac src/main/java/com/kontagent/*" and press Enter
-3. Confirm there are now several class files at src/main/java/com/kontagent
-4. Set your CLASSPATH:
-5. Set your JAVA_HOME:
+2. Set your CLASSPATH to the src directory: "export CLASSPATH=/home/coder/workspace/kontagent/src/main/java/com/kontagent"
+3. Set your JAVA_HOME: "export JAVA_HOME=/usr/java/jdk1.7.0_03"
+4. Compile the files: "$JAVA_HOME/bin/javac src/main/java/com/kontagent/*"
+5. Confirm there are now several class files at src/main/java/com/kontagent
 
 RUNNING THE APPLICATION==========================================
 3. Ensure that your user has permission to execute kontagent_ss ("sudo chmod u+x kontagent_ss")
-4. Execute the shell script by typing "./kontagent_ss /home/coolcoder/workspace/freshmeat/kontagent/crazymatrix.csv" and pressing enter.
+4. Execute the shell script by typing "./kontagent_ss /home/coder/workspace/freshmeat/kontagent/crazymatrix.csv" and pressing enter.
 5. You may redirect the stdout to a file by appending "&> output.csv" to the command
 6. There are already several CSV's at src/main/resources/*.csv
 
