@@ -93,19 +93,25 @@ public class SpreadSheet extends HashMap<String, Node>{
 				Node updatedReferencedNode = this.get(referencedKey);
 				this.put(currentKey, updatedReferencedNode);
 				break;
-			case OPERATIONWITHCELLREF:
-				String withoutEqual = currentNode.getContents().substring(1);
-				String keyToLookup = withoutEqual.split(" ")[0];
-				Node ref = this.get(keyToLookup);
-				process(keyToLookup, ref);
+			case OPERATION_WITH_CELL_REF:
+				//If it's an operation with a CELL_REFERENCE, we need to look up the referenced cell now
+				//The key we want to lookup is the first token after the = sign
+				String[] operation = currentNode.getContents().substring(1).split(" ");
+				String keyToLookup=operation[0];
+				
+				//Find the node that this node references, and process it
+				Node referenced = this.get(keyToLookup);
+				process(keyToLookup, referenced);
+				
+				//Once that node has been processed, look it up again
 				Node updatedRef = this.get(keyToLookup);
-				//Good god this needs to be fixed ASAP.
-				//TODO: Fix this nasty kludge
-				Node newNode = new Node("=" + updatedRef.getContents() + " " + withoutEqual.split(" ")[1] + " " + withoutEqual.split(" ")[2]);
+				
+				//Build up a new node that no longer contains a cell reference, just a normal operation
+				Node newNode = new Node("=" + updatedRef.getContents() + " " + operation[1] + " " + operation[2]);
 				process(currentKey, newNode);
 				break;
 			case OPERATION:
-				//If it's an operation, go ahead and perform the calculation
+				//If it's an operation, perform the calculation
 				this.put(currentKey, currentNode.performCalculation());
 				break;
 		}

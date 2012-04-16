@@ -34,10 +34,11 @@ public class Node {
 		// SIMPLE_VALUE i.e. 6, 1.2, or 0.53
 		// CELL_REFERENCE i.e. A21, Z28, F2203, NOT F02
 		// OPERATION i.e. =0.40 1.58 +, =4 2 -
+		// OPERATION_WITH_CELL_REF i.e. =A124 4.34 *
 		SIMPLE_VALUE(FLOAT_OR_INT), 
 		CELL_REFERENCE("=[A-Z]([1-9]|[1-9][0-9]+)"), 
 		OPERATION("(=)" + FLOAT_OR_INT + "[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])"),
-		OPERATIONWITHCELLREF("(=)(" + FLOAT_OR_INT + "|" + "[A-Z]([1-9]|[1-9][0-9]+)" + ")[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])");
+		OPERATION_WITH_CELL_REF("(=)(" + FLOAT_OR_INT + "|" + "[A-Z]([1-9]|[1-9][0-9]+)" + ")[( )]" + FLOAT_OR_INT + "[( )]" + "([\\+|\\-|\\/|\\*])");
 
 		Type(String regex) {
 			this.regex = regex;
