@@ -1,7 +1,39 @@
+________________________________________________________________
+    _    _                                                      
+    /  ,'                                                       
+---/_.'-------__-----__---_/_-----__-----__-----__-----__---_/_-
+  /  \      /   )  /   )  /     /   )  /   )  /___)  /   )  /   
+_/____\____(___/__/___/__(_ ___(___(__(___/__(___ __/___/__(_ __
+                                         /                      
+                                     (_ /                       
+
 Hi there!
 
-Thanks for taking the time to review my code.
+Thanks for taking the time to review my work.
 
-- Here's how to build it
-- Here's how to run it
-- Here's what it can do
+
+
+
+BUILDING WITH APACHE MAVEN==============================
+1. Navigate to the root level of the project (with the pom.xml)
+2. type: "mvn clean package" and press Enter, ensure all test cases pass and "BUILD SUCCESS" appears
+
+BUILDING WITHOUT APACHE MAVEN===========================
+1. Navigate to the root level of the project (with the pom.xml)
+2. type: "javac src/main/java/com/kontagent/*" and press Enter
+3. Confirm there are now several class files at src/main/java/com/kontagent
+
+RUNNING THE APPLICATION=================================
+1. Set your CLASSPATH
+2. Set your JAVA_HOME
+3. Ensure that you have permission to execute kontagent_ss (sudo chmod u+x kontagent_ss)
+4. Execute the shell script by typing "./kontagent_ss /home/coolcoder/workspace/freshmeat/kontagent/crazymatrix.csv" and pressing enter.
+
+ASSUMPTIONS/NOTES=======================================
+-The application doesn't fail very gracefully, nor does it recover very well. If it detects malformed input it will reject it outright.
+-Normally I would not do things like System.out.println, System.exit(0), or read file input from an absolute path. I promise I would never do anything like that in production potential code.
+-Normally I would not "roll my own" CSV parser, Math library, Matrix manipulator, etc., but I'm assuming the use of third party libraries is discouraged for this exercise.
+
+Thanks again,
+Have a great day,
+Matt Holtom
