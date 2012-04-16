@@ -90,6 +90,6 @@ public class SpreadSheetTest {
 	public void testSpreadsheets() throws InvalidNodeException{
 		SpreadSheet ss = new SpreadSheet(inputCSV);
 		ss.processSpreadsheet();
-		Assert.assertEquals(outputCSV, ss.getAsCSV());
+		Assert.assertEquals(outputCSV, ss.getAsCsv());
 	}
 }

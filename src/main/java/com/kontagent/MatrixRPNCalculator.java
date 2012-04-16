@@ -10,12 +10,15 @@ class MatrixRPNCalculator {
 	        System.exit(0);
 	    }
 		
-		String inputString = IOUtils.getInput(args[0]);
+		String inputCsv = IOUtils.getInput(args[0]);
 		
-		SpreadSheet spreadSheet = new SpreadSheet(inputString);
+		//Create a new spreadsheet from input, and validate contents
+		SpreadSheet spreadSheet = new SpreadSheet(inputCsv);
 		
+		//Perform the actual calculations inside the spreadsheet
 		spreadSheet.processSpreadsheet();
 		
-		IOUtils.sendOutput(spreadSheet.getAsCSV());
+		//Send output of spreadsheet after processing
+		IOUtils.sendOutput(spreadSheet.getAsCsv());
 	}
 }

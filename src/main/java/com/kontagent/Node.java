@@ -25,8 +25,7 @@ public class Node {
 		}
 		// Confirm that the node has been assigned a type
 		if (this.type == null) {
-			throw new InvalidNodeException(
-					"This node does not match a valid format");
+			throw new InvalidNodeException("This node does not match a valid format");
 		}
 	}
 
@@ -71,13 +70,13 @@ public class Node {
 			throw new InvalidNodeException("Attempt to perform calculation failed");
 		}
 		
+		//Chop off the equals sign, and split into the operands and operator
 		String[] operation = this.contents.substring(1).split(" ");
-
 		Float operand1 = Float.parseFloat(operation[0]);
 		Float operand2 = Float.parseFloat(operation[1]);
-		Float result = null;
 		String operator = operation[2];
 
+		Float result = null;
 		if (operator.equals("+")) {
 			result = operand1 + operand2;
 		} else if (operator.equals("-")) {
