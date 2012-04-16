@@ -9,7 +9,7 @@ _/____\____(___/__/___/__(_ ___(___(__(___/__(___ __/___/__(_ __
 
 Hi there!
 
-Thanks for taking the time to review my work, I really appreciate it. 
+Thanks for taking the time to review my work. 
 
 CONTENTS========================================================
 .
@@ -41,25 +41,26 @@ CONTENTS========================================================
 BUILDING WITH APACHE MAVEN=======================================
 1. Navigate to the root level of the project (with the pom.xml)
 2. type: "mvn clean package" and press Enter, ensure all test cases pass and "BUILD SUCCESS" appears
+3. Set your CLASSPATH: 
+4. Set your JAVA_HOME:
 
 BUILDING WITHOUT APACHE MAVEN====================================
 1. Navigate to the root level of the project (with the pom.xml)
 2. type: "javac src/main/java/com/kontagent/*" and press Enter
 3. Confirm there are now several class files at src/main/java/com/kontagent
+4. Set your CLASSPATH:
+5. Set your JAVA_HOME:
 
 RUNNING THE APPLICATION==========================================
-1. Set your CLASSPATH to /usr/my/path/to/java
-2. Set your JAVA_HOME
 3. Ensure that your user has permission to execute kontagent_ss ("sudo chmod u+x kontagent_ss")
 4. Execute the shell script by typing "./kontagent_ss /home/coolcoder/workspace/freshmeat/kontagent/crazymatrix.csv" and pressing enter.
 5. You may redirect the stdout to a file by appending "&> output.csv" to the command
-6. I've included several CSV files for your convenience at src/main/resources/*.csv
+6. There are already several CSV's at src/main/resources/*.csv
 
 ASSUMPTIONS/NOTES===============================================
 -The application doesn't fail very gracefully, nor does it recover very well. If it detects malformed input it will reject it outright.
 -Normally I would not do things like System.out.println, System.exit(0), or read file input from an absolute path. I promise I would never do anything like that in production potential code.
 -Normally I would not "roll my own" CSV parser, Math library, Matrix manipulator, etc., but I'm assuming the use of third party libraries is discouraged for this exercise.
 
-Thanks again,
-Have a great day,
+Thanks again, have a great day,
 Matt Holtom
