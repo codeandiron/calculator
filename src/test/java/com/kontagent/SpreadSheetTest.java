@@ -1,4 +1,4 @@
-package com.kontagent;
+package com.calculator;
 
 import java.util.Arrays;
 import java.util.Collection;
