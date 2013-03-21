@@ -1,4 +1,4 @@
-package com.kontagent;
+package com.calculator;
 
 import java.util.HashMap;
 

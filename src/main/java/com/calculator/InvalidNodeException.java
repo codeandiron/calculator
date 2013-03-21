@@ -1,4 +1,4 @@
-package com.kontagent;
+package com.calculator;
 
 public class InvalidNodeException extends Exception {
 	
