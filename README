@@ -4,7 +4,7 @@
  |_|_\_| |_|\_|  \___\__,_|_\__|\_,_|_\__,_|\__\___/_|  
                                                         
 
-This is a Reverse Polish Notation calculator that uses a matrix (excel style) spreadsheet as input.
+This is a Reverse Polish Notation calculator that uses a matrix of CSV cells as input. It can be thought of as similar to excel, where cells can reference other cells in their "Formulas". In Reverse Polish Notation, the operator comes before the operands in the formula (e.g. =* 5 4, or =+ A3 8).
 
 SETUP============================================================
 1. Set your JAVA_HOME (absolutely): "export JAVA_HOME=/usr/java/jdk1.7.0_03"
