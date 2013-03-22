@@ -6,28 +6,30 @@
 
 This is a Reverse Polish Notation calculator that uses a matrix (excel style) spreadsheet as input.
 
+SETUP============================================================
+1. Set your JAVA_HOME (absolutely): "export JAVA_HOME=/usr/java/jdk1.7.0_03"
+2. Navigate to the root level of the project (with the pom.xml)
+
+
 BUILDING WITH APACHE MAVEN=======================================
-1. Navigate to the root level of the project (with the pom.xml)
-2. Set your CLASSPATH to the maven target directory: "export CLASSPATH=/home/coder/workspace/calculator/target/classes"
-3. Set your JAVA_HOME: "export JAVA_HOME=/usr/java/jdk1.7.0_03"
-4. Build the project: "mvn clean package", ensure all test cases pass and "BUILD SUCCESS" appears
+1. Build the project: "mvn clean package", ensure all test cases pass and "BUILD SUCCESS" appears
+2. Set your CLASSPATH (absolutely) to the maven target directory: "export CLASSPATH=/home/coder/workspace/calculator/target/classes"
+
 
 BUILDING WITHOUT APACHE MAVEN====================================
-1. Navigate to the root level of the project (with the pom.xml)
-2. Set your CLASSPATH to the src directory: "export CLASSPATH=/home/coder/workspace/rpn-calc/src/main/java/com/calculator"
-3. Set your JAVA_HOME: "export JAVA_HOME=/usr/java/jdk1.7.0_03"
-4. Compile the files: "$JAVA_HOME/bin/javac src/main/java/com/calculator/*"
-5. Confirm there are now several class files at src/main/java/com/calculator
+1. Compile the files with javac: "$JAVA_HOME/bin/javac src/main/java/com/calculator/*"
+2. Confirm there are now several class files at src/main/java/com/calculator
+3. Set your CLASSPATH (absolutely) to the src directory: "export CLASSPATH=/home/coder/workspace/rpn-calc/src/main/java/com/calculator"
+
 
 RUNNING THE APPLICATION==========================================
-3. Ensure that your user has permission to execute calculator ("sudo chmod u+x calculator")
-4. Execute the application by typing "./calculator /home/coder/workspace/calculator/src/main/resources/crazy.csv" and pressing enter.
-5. You may redirect the stdout to a file by appending "&> output.csv" to the command
-6. There are already several CSV's available at src/main/resources/*.csv
+1. Ensure that your user has permission to execute calculator shell script ("sudo chmod u+x calculator")
+2. Execute the application by typing "./calculator /home/coder/workspace/calculator/src/main/resources/crazy.csv" and pressing enter.
+3. You may redirect the stdout to a file by appending "&> output.csv" to the command
+4. There are already several CSV's available at src/main/resources/*.csv
 
 ASSUMPTIONS/NOTES===============================================
--Although it says it's not a requirement, the application does handle multi-cell indirection. It'll even do okay if you have a cell that's an operation on a cell reference that points to another cell that has an operation.
--It will not do multiple cell references in one cell (So no =B2 A2 *) 
--The application doesn't fail very gracefully, nor does it recover very well. If it detects malformed input it will reject it outright.
--Normally I would not do things like System.out.println, System.exit(0), or read file input from an absolute path. I promise I would never do anything like that in production potential code. I also do absolutely zero logging in this application, on purpose.
--Normally I would not "roll my own" CSV parser, Math library, Matrix manipulator, etc., but I'm assuming the use of third party libraries is discouraged for this exercise.
+-The calculator does handle multi-cell indirection. It'll even do okay if you have a cell that's an operation on a cell reference that points to another cell that has an operation.
+-It will not do multiple cell references in one cell (So no =B2 A2 *). This is a potential future improvement.
+-Normally I would not do things like System.out.println, System.exit(0), or read file input from an absolute path. I promise I would never do anything like that in production potential code. I also do absolutely zero logging in this application, on purpose. This calculator was originally built as an exercise for a company I interviewed at.
+-Normally I would not "roll my own" CSV parser, Math library, Matrix manipulator, etc., but I assumed the use of third party libraries was discouraged for this exercise.
